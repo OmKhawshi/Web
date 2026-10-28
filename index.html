@@ -1175,6 +1175,42 @@
       margin-top: 6px;
     }
 
+
+    .fab {
+      position: fixed;
+      z-index: 50;
+      right: max(16px, env(safe-area-inset-right, 0px));
+      bottom: max(16px, env(safe-area-inset-bottom, 0px));
+    }
+
+    .fab a {
+      box-sizing: border-box;
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--bg);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+      transition: scale 0.2s;
+    }
+
+    .fab a:hover {
+      scale: 1.08;
+    }
+
+    .fab a:focus-visible {
+      outline: 2px solid var(--fg);
+      outline-offset: 3px;
+    }
+
+    .fab svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
     @media (max-width: 860px) {
       body {
         font-size: 16px;
@@ -1404,7 +1440,6 @@
         <div class="role-card pay">
           <span class="mono">Annual package</span>
           <div class="big">₹25<small>LPA</small></div>
-          <p>Stable job in a global technology company.</p>
         </div>
       </div>
       <ol class="route" style="margin-top:56px">
@@ -1625,7 +1660,9 @@
       </div>
       <div class="copied mono" id="copied" role="status"></div>
       <div class="cta-row">
-        <a class="btn primary" href="https://wa.me/918788616249" rel="noopener">WhatsApp</a>
+        <a class="btn primary"
+          href="https://wa.me/918788616249?text=Namaste%20Omprakash%20maine%20aapka%20biodata%20dekha.%20Hum%20aapse%20baat%20karna%20chahte%20hain."
+          rel="noopener">WhatsApp</a>
         <a class="btn" href="https://www.linkedin.com/in/omprakash-khawshi" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://www.instagram.com/omkhawshi/" rel="noopener">Instagram</a>
       </div>
@@ -1681,18 +1718,18 @@
       window.addEventListener('pointermove', function (e) {
         if (!down) return;
         var dx = e.clientX - sx;
-        if (Math.abs(dx) > 4) { moved = true; strip.classList.add('drag'); }
+        if (Math.abs(dx) > 4) {moved = true; strip.classList.add('drag');}
         strip.scrollLeft = sl - dx;
       });
-      window.addEventListener('pointerup', function () { down = false; strip.classList.remove('drag'); });
+      window.addEventListener('pointerup', function () {down = false; strip.classList.remove('drag');});
 
       var lb = document.getElementById('lb');
       var lbImg = document.getElementById('lbImg');
       var lastBtn = null;
-      function closeLb() { lb.classList.remove('open'); lbImg.src = ''; if (lastBtn) lastBtn.focus(); }
+      function closeLb() {lb.classList.remove('open'); lbImg.src = ''; if (lastBtn) lastBtn.focus();}
       Array.prototype.forEach.call(document.querySelectorAll('.fr'), function (b) {
         b.addEventListener('click', function () {
-          if (moved) { moved = false; return; }
+          if (moved) {moved = false; return;}
           lastBtn = b;
           lbImg.src = b.getAttribute('data-src');
           lbImg.alt = b.getAttribute('data-alt') || '';
@@ -1701,14 +1738,14 @@
         });
       });
       document.getElementById('lbClose').addEventListener('click', closeLb);
-      lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
+      lb.addEventListener('click', function (e) {if (e.target === lb) closeLb();});
+      document.addEventListener('keydown', function (e) {if (e.key === 'Escape' && lb.classList.contains('open')) closeLb();});
 
       var copyBtn = document.getElementById('copy');
       var note = document.getElementById('copied');
       copyBtn.addEventListener('click', function () {
         var text = '+91 87886 16249';
-        var done = function () { note.textContent = 'Number copy ho gaya'; };
+        var done = function () {note.textContent = 'Number copy ho gaya';};
         var fallback = function () {
           var r = document.createRange();
           r.selectNodeContents(document.getElementById('num'));
@@ -1717,7 +1754,7 @@
         };
         try {
           navigator.clipboard.writeText(text).then(done, fallback);
-        } catch (err) { fallback(); }
+        } catch (err) {fallback();}
       });
     })();
   </script>
