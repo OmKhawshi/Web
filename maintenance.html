@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A0807">
+  <title>Omprakash Khawshi | Back soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Tiro+Devanagari+Hindi&display=swap">
+  <style>
+    :root {
+      --bg: #0A0807; --surface: #14100D; --fg: #F2EBDD; --muted: #A8A092; --line: #2B241D; --gold: #E3B964; --maroon: #8E2433;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      min-height: 100vh; min-height: 100dvh; background: var(--bg); color: var(--fg);
+      font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif; line-height: 1.6;
+      padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+      display: grid; place-items: center; overflow-x: hidden;
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(227, 185, 100, 0.12), transparent 60%);
+    }
+    main { width: 100%; max-width: 640px; text-align: center; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .lang { display: inline-flex; border: 1px solid var(--line); margin-bottom: 36px; }
+    .lang button { all: unset; cursor: pointer; padding: 10px 16px; font: 500 13px "JetBrains Mono", ui-monospace, monospace; color: var(--muted); }
+    .lang button[aria-pressed="true"] { background: var(--gold); color: var(--bg); }
+    .lang button:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+    .slate { border: 2px solid var(--gold); background: var(--surface); text-align: left; }
+    .sticks { height: 34px; background: repeating-linear-gradient(-45deg, var(--gold) 0 26px, var(--bg) 26px 52px); border-bottom: 2px solid var(--gold); transform-origin: 0 100%; animation: clap 3.6s ease-in-out infinite; }
+    @keyframes clap { 0%, 70%, 100% { transform: rotate(0); } 80% { transform: rotate(-9deg); } 88% { transform: rotate(0); } }
+    .slate-body { padding: 22px 24px 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
+    .slate-body div { border-bottom: 1px solid var(--line); padding-bottom: 8px; min-width: 0; }
+    .slate-body b { display: block; font-weight: 500; font-size: 1.05rem; overflow-wrap: anywhere; }
+    .rec { display: inline-flex; align-items: center; gap: 8px; }
+    .rec i { width: 10px; height: 10px; border-radius: 50%; background: #e0394b; animation: blink 1.4s steps(2, start) infinite; }
+    @keyframes blink { to { visibility: hidden; } }
+    h1 { margin: 40px 0 14px; font-family: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif; font-weight: 900; text-transform: uppercase; line-height: 0.95; font-size: clamp(2.6rem, 11vw, 5rem); }
+    h1 em { font-style: normal; color: var(--gold); }
+    p { margin: 0 auto; max-width: 46ch; color: var(--muted); font-size: 1.05rem; }
+    html[lang="hi"] body, html[lang="mr"] body { font-family: "Tiro Devanagari Hindi", "Noto Serif Devanagari", "Mangal", serif; }
+    html[lang="hi"] .mono, html[lang="mr"] .mono, html[lang="hi"] h1, html[lang="mr"] h1 { letter-spacing: 0; text-transform: none; }
+    html[lang="hi"] h1, html[lang="mr"] h1 { font-family: "Tiro Devanagari Hindi", "Noto Serif Devanagari", serif; line-height: 1.2; font-size: clamp(2.2rem, 9vw, 3.6rem); }
+    .bar { height: 4px; background: var(--line); margin: 34px auto 0; max-width: 340px; overflow: hidden; }
+    .bar span { display: block; height: 100%; width: 40%; background: linear-gradient(90deg, var(--maroon), var(--gold)); animation: slide 2.2s ease-in-out infinite; }
+    @keyframes slide { from { translate: -100% 0; } to { translate: 250% 0; } }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
+    .btn { display: inline-block; padding: 14px 22px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font: 500 13px "JetBrains Mono", ui-monospace, monospace; letter-spacing: 0.1em; text-transform: uppercase; background: none; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    .btn.primary { background: var(--gold); color: var(--bg); }
+    .btn:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+    .btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+    .foot { margin-top: 40px; }
+    @media (max-width: 480px) { .slate-body { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .sticks, .bar span { animation: none; } .rec i { animation: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-l="en" aria-pressed="true">EN</button>
+      <button type="button" data-l="hi" aria-pressed="false">हिंदी</button>
+      <button type="button" data-l="mr" aria-pressed="false">मराठी</button>
+    </div>
+
+    <div class="slate" aria-hidden="true">
+      <div class="sticks"></div>
+      <div class="slate-body">
+        <div><span class="mono" data-i="l1">Production</span><b>Omprakash Khawshi</b></div>
+        <div><span class="mono" data-i="l2">Scene</span><b data-i="v2">Update in progress</b></div>
+        <div><span class="mono" data-i="l3">Status</span><b class="rec"><i></i><span data-i="v3">Shooting</span></b></div>
+        <div><span class="mono" data-i="l4">Release</span><b data-i="v4">Very soon</b></div>
+      </div>
+    </div>
+
+    <h1><span data-i="h1a">Site is</span> <em data-i="h1b">under update</em></h1>
+    <p data-i="p">I am making some changes to my biodata page. It will be back in a short while. Thank you for your patience.</p>
+    <div class="bar" aria-hidden="true"><span></span></div>
+
+    <div class="actions">
+      <button class="btn primary" type="button" id="retry" data-i="retry">Check again</button>
+      <a class="btn" id="wa" href="https://wa.me/918788616249?text=Namaste%20Omprakash%20ji%2C%20aapka%20biodata%20page%20abhi%20update%20ho%20raha%20hai.%20Kya%20aap%20link%20dobara%20bhej%20sakte%20hain%3F" rel="noopener" data-i="wa">WhatsApp</a>
+    </div>
+    <p class="mono foot" data-i="foot">This page checks again by itself every minute</p>
+  </main>
+
+  <script>
+    (function () {
+      var D = {
+        en: { l1: 'Production', l2: 'Scene', l3: 'Status', l4: 'Release', v2: 'Update in progress', v3: 'Shooting', v4: 'Very soon',
+              h1a: 'Site is', h1b: 'under update',
+              p: 'I am making some changes to my biodata page. It will be back in a short while. Thank you for your patience.',
+              retry: 'Check again', wa: 'WhatsApp', foot: 'This page checks again by itself every minute' },
+        hi: { l1: 'निर्माण', l2: 'दृश्य', l3: 'स्थिति', l4: 'रिलीज़', v2: 'अपडेट जारी है', v3: 'शूटिंग चालू', v4: 'बहुत जल्द',
+              h1a: 'साइट पर', h1b: 'काम चल रहा है',
+              p: 'मैं अपने बायोडेटा पेज में कुछ बदलाव कर रहा हूँ। यह थोड़ी देर में वापस आ जाएगा। आपके धैर्य के लिए धन्यवाद।',
+              retry: 'फिर से देखें', wa: 'व्हाट्सऐप', foot: 'यह पेज हर मिनट अपने आप दोबारा जाँचता है' },
+        mr: { l1: 'निर्मिती', l2: 'दृश्य', l3: 'स्थिती', l4: 'प्रदर्शन', v2: 'अपडेट सुरू आहे', v3: 'चित्रीकरण सुरू', v4: 'लवकरच',
+              h1a: 'साइटवर', h1b: 'काम सुरू आहे',
+              p: 'मी माझ्या बायोडेटा पेजमध्ये काही बदल करत आहे. थोड्याच वेळात ते पुन्हा सुरू होईल. आपल्या संयमाबद्दल धन्यवाद.',
+              retry: 'पुन्हा पहा', wa: 'व्हॉट्सॲप', foot: 'हे पेज दर मिनिटाला आपोआप पुन्हा तपासते' }
+      };
+      var nodes = document.querySelectorAll('[data-i]');
+      function apply(l) {
+        if (!D[l]) l = 'en';
+        document.documentElement.lang = l;
+        nodes.forEach(function (n) { n.textContent = D[l][n.getAttribute('data-i')]; });
+        document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-l') === l)); });
+        try { localStorage.setItem('om-lang', l); } catch (e) {}
+      }
+      document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-l')); }); });
+      var saved = 'en';
+      try { saved = localStorage.getItem('om-lang') || 'en'; } catch (e) {}
+      apply(saved);
+
+      function reload() { location.reload(); }
+      document.getElementById('retry').addEventListener('click', reload);
+      setTimeout(reload, 60000);
+    })();
+  </script>
+</body>
+</html>
