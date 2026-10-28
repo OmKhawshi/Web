@@ -1117,6 +1117,100 @@
       right: max(12px, env(safe-area-inset-right, 0px));
     }
 
+
+    .addr {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      max-width: 620px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .addr-pin {
+      flex: none;
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, scale 0.2s;
+    }
+
+    .addr-pin:hover {
+      background: var(--gold);
+      color: var(--bg);
+      scale: 1.08;
+    }
+
+    .addr-pin svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+
+    .addr-txt {
+      min-width: 0;
+    }
+
+    .addr-txt .mono {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .addr-txt address {
+      font-style: normal;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .addr-txt a {
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+
+    .fab {
+      position: fixed;
+      z-index: 50;
+      right: max(16px, env(safe-area-inset-right, 0px));
+      bottom: max(16px, env(safe-area-inset-bottom, 0px));
+    }
+
+    .fab a {
+      box-sizing: border-box;
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--bg);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+      transition: scale 0.2s;
+    }
+
+    .fab a:hover {
+      scale: 1.08;
+    }
+
+    .fab a:focus-visible {
+      outline: 2px solid var(--fg);
+      outline-offset: 3px;
+    }
+
+    .fab svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
     @media (max-width: 860px) {
       body {
         font-size: 16px;
@@ -1346,7 +1440,6 @@
         <div class="role-card pay">
           <span class="mono">Annual package</span>
           <div class="big">₹25<small>LPA</small></div>
-          <p>Stable job in a global technology company.</p>
         </div>
       </div>
       <ol class="route" style="margin-top:56px">
@@ -1391,7 +1484,8 @@
             jaati hai.</p>
           <p>Choti cheezon me khushi milti hai: ek achhi coffee, achanak road trip, ya koi kitaab. Mere liye
             <span>personal khushi aur career ki growth saath chalni chahiye.</span> Main imaandari, samajhdaari aur
-            sachchi baatcheet ko maanta hoon.</p>
+            sachchi baatcheet ko maanta hoon.
+          </p>
         </div>
       </div>
     </section>
@@ -1543,13 +1637,32 @@
       <h2 id="c-h">Agle <em>scene</em> ke liye.</h2>
       <p>Agar hamari baat aapko theek lage, to seedhe mujhse baat kijiye. WhatsApp par message bhejna sabse aasaan hai.
       </p>
+      <div class="addr">
+        <a class="addr-pin"
+          href="https://www.google.com/maps/search/?api=1&query=Flat+No.+A-1003%2C+Nivasa+Elevia%2C+Keshav+Nagar%2C+Mundhwa%2C+Pune%2C+Maharashtra+411036"
+          rel="noopener" aria-label="Open current address in Google Maps">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" />
+            <circle cx="12" cy="9.5" r="2.6" />
+          </svg>
+        </a>
+        <div class="addr-txt">
+          <span class="mono">Current address</span>
+          <address>Flat No. A-1003, Nivasa Elevia, Keshav Nagar, Mundhwa, Pune, Maharashtra - 411036</address>
+          <a href="https://www.google.com/maps/search/?api=1&query=Flat+No.+A-1003%2C+Nivasa+Elevia%2C+Keshav+Nagar%2C+Mundhwa%2C+Pune%2C+Maharashtra+411036"
+            rel="noopener">Open in Google Maps</a>
+        </div>
+      </div>
       <div class="phone">
         <strong id="num">+91 87886 16249</strong>
         <button class="btn" type="button" id="copy">Copy number</button>
       </div>
       <div class="copied mono" id="copied" role="status"></div>
       <div class="cta-row">
-        <a class="btn primary" href="https://wa.me/918788616249" rel="noopener">WhatsApp</a>
+        <a class="btn primary"
+          href="https://wa.me/918788616249?text=Namaste%20Omprakash%20maine%20aapka%20biodata%20dekha.%20Hum%20aapse%20baat%20karna%20chahte%20hain."
+          rel="noopener">WhatsApp</a>
         <a class="btn" href="https://www.linkedin.com/in/omprakash-khawshi" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://www.instagram.com/omkhawshi/" rel="noopener">Instagram</a>
       </div>
@@ -1605,18 +1718,18 @@
       window.addEventListener('pointermove', function (e) {
         if (!down) return;
         var dx = e.clientX - sx;
-        if (Math.abs(dx) > 4) { moved = true; strip.classList.add('drag'); }
+        if (Math.abs(dx) > 4) {moved = true; strip.classList.add('drag');}
         strip.scrollLeft = sl - dx;
       });
-      window.addEventListener('pointerup', function () { down = false; strip.classList.remove('drag'); });
+      window.addEventListener('pointerup', function () {down = false; strip.classList.remove('drag');});
 
       var lb = document.getElementById('lb');
       var lbImg = document.getElementById('lbImg');
       var lastBtn = null;
-      function closeLb() { lb.classList.remove('open'); lbImg.src = ''; if (lastBtn) lastBtn.focus(); }
+      function closeLb() {lb.classList.remove('open'); lbImg.src = ''; if (lastBtn) lastBtn.focus();}
       Array.prototype.forEach.call(document.querySelectorAll('.fr'), function (b) {
         b.addEventListener('click', function () {
-          if (moved) { moved = false; return; }
+          if (moved) {moved = false; return;}
           lastBtn = b;
           lbImg.src = b.getAttribute('data-src');
           lbImg.alt = b.getAttribute('data-alt') || '';
@@ -1625,14 +1738,14 @@
         });
       });
       document.getElementById('lbClose').addEventListener('click', closeLb);
-      lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
+      lb.addEventListener('click', function (e) {if (e.target === lb) closeLb();});
+      document.addEventListener('keydown', function (e) {if (e.key === 'Escape' && lb.classList.contains('open')) closeLb();});
 
       var copyBtn = document.getElementById('copy');
       var note = document.getElementById('copied');
       copyBtn.addEventListener('click', function () {
         var text = '+91 87886 16249';
-        var done = function () { note.textContent = 'Number copy ho gaya'; };
+        var done = function () {note.textContent = 'Number copy ho gaya';};
         var fallback = function () {
           var r = document.createRange();
           r.selectNodeContents(document.getElementById('num'));
@@ -1641,7 +1754,7 @@
         };
         try {
           navigator.clipboard.writeText(text).then(done, fallback);
-        } catch (err) { fallback(); }
+        } catch (err) {fallback();}
       });
     })();
   </script>
